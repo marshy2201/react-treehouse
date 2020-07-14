@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
-import Jumbotron from './components/Jumbotron';
+import UserInfo from './components/UserInfo';
 
 class App extends Component {
   state = {
@@ -22,7 +22,12 @@ class App extends Component {
         <Navbar />
         {this.state.loading ? 
           <h1 className="display-4 text-center mt-5">Loading...</h1> : 
-          <Jumbotron data={data} />}
+          <div>
+            <UserInfo data={data} />
+          </div>
+        }
+      </div>
+    );
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Jumbotron, Container } from 'react-bootstrap';
 
-const JumbotronComp = ({ data }) => {
+const UserInfo = ({ data }) => {
   const firstName = data.name.split(' ')[0]; 
   const numberOfBadges = data.badges.length;
 
@@ -26,4 +26,4 @@ const JumbotronComp = ({ data }) => {
   );
 };
 
-export default JumbotronComp;
+export default UserInfo;
