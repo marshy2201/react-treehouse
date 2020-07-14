@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import UserInfo from './components/UserInfo';
+import Topics from './components/Topics';
 
 class App extends Component {
   state = {
@@ -20,14 +21,14 @@ class App extends Component {
     return (
       <div>
         <Navbar />
+        
         {this.state.loading ? 
           <h1 className="display-4 text-center mt-5">Loading...</h1> : 
           <div>
             <UserInfo data={data} />
+            <Topics data={data} />
           </div>
         }
-      </div>
-    );
       </div>
     );
   }
