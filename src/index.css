@@ -11,6 +11,10 @@
   border-radius: 50%;
 }
 
+.badge-image {
+  width: 80px;
+}
+
 .card {
   border: none;
   border-radius: 0;

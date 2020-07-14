@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import UserInfo from './components/UserInfo';
 import Topics from './components/Topics';
+import RecentBadges from './components/RecentBadges';
 
 class App extends Component {
   state = {
@@ -27,6 +28,7 @@ class App extends Component {
           <div>
             <UserInfo data={data} />
             <Topics data={data} />
+            <RecentBadges badges={data.badges} />
           </div>
         }
       </div>
