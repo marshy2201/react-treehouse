@@ -1,17 +1,16 @@
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Container } from 'react-bootstrap';
 import logo from '../logo.svg';
+import SearchStudent from './SearchStudent';
 
-const NavbarComp = () => (
+const NavbarComp = ({ onSearch }) => (
   <Navbar bg="dark" variant="dark">
     <Container>
       <Navbar.Brand href="#home" className="border-right border-secondary pr-4">
         <img src={logo} id="treehouse-logo" alt="Treehouse Logo" />
         <span className="ml-4">Home</span>
       </Navbar.Brand>
-      <Nav className="mr-auto">
-        <Nav.Link href="#features">Treehouse Students</Nav.Link>
-      </Nav>
+      <SearchStudent onSearch={onSearch} />
     </Container>
   </Navbar>
 );

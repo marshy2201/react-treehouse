@@ -2,6 +2,16 @@
   background-color: #5fcf80!important;
 }
 
+.btn-outline-success {
+  color: #5fcf80;
+  border-color: #5fcf80;
+}
+
+.btn-outline-success:hover {
+  background-color: #5fcf80;
+  border-color: #5fcf80;
+}
+
 #treehouse-logo {
   width: 35px;
 }
