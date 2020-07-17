@@ -34,11 +34,11 @@ class App extends Component {
     } else if (!data) { // display not found
       user = <h1 className="display-4 text-center mt-5">User Not Found</h1>;
     } else { // display user info
-      user = <div>
+      user = <React.Fragment>
                <UserInfo data={data} />
                <Topics data={data} />
                <RecentBadges badges={data.badges} />
-             </div>;
+              </React.Fragment>;
     }
     
     return (
