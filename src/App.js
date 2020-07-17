@@ -42,10 +42,10 @@ class App extends Component {
     }
     
     return (
-      <div>
+      <React.Fragment>
         <Navbar onSearch={this.performSearch} />
         { user }
-      </div>
+      </React.Fragment>
     );
   }
 }
