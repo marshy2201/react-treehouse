@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import UserInfo from './components/UserInfo';
 import Topics from './components/Topics';
@@ -42,10 +43,10 @@ class App extends Component {
     }
     
     return (
-      <React.Fragment>
+      <Router>
         <Navbar onSearch={this.performSearch} />
         { user }
-      </React.Fragment>
+      </Router>
     );
   }
 }
