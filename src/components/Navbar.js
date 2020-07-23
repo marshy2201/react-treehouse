@@ -6,7 +6,7 @@ import SearchStudent from './SearchStudent';
 
 const NavbarComp = ({ onSearch }) => (
   <Navbar bg="dark" variant="dark">
-    <Container>
+    <Container className="flex-wrap">
       <Navbar.Brand as={Link} to="/" className="border-right border-secondary pr-4">
         <img src={logo} id="treehouse-logo" alt="Treehouse Logo" />
         <span className="ml-4">Home</span>
