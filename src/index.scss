@@ -5,11 +5,11 @@
 .btn-outline-success {
   color: #5fcf80;
   border-color: #5fcf80;
-}
 
-.btn-outline-success:hover {
-  background-color: #5fcf80;
-  border-color: #5fcf80;
+  &:hover {
+    background-color: #5fcf80;
+    border-color: #5fcf80;
+  }
 }
 
 #treehouse-logo {
@@ -47,19 +47,19 @@
 
 .course-link {
   color: #666;
-}
 
-.course-link .card {
-  transition: background .2s;
-}
+  &:hover {
+    color: #fff;
+    text-decoration: none;
 
-.course-link:hover {
-  color: #fff;
-  text-decoration: none;
-}
+    .card {
+      background: #6c757d;
+    }
+  }
 
-.course-link:hover .card {
-  background: #6c757d;
+  .card {
+    transition: background .2s;
+  }
 }
 
 @keyframes spinHorizontal {
