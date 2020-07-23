@@ -11,7 +11,7 @@ const RecentBadge = ({ badge }) => (
     <Row>
       <Col md="3">
         <Card.Body className="text-center">
-          <Card.Img src={badge.icon_url} className="badge-image" />
+          <Card.Img src={badge.icon_url} className="recent-badge-image" />
         </Card.Body>
       </Col>
       <Col md="9">

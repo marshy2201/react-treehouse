@@ -42,8 +42,7 @@ class App extends Component {
                   <Topics data={data} />
                   <RecentBadges badges={data.badges} />
                 </Route>
-                <Route 
-                  exact
+                <Route
                   path="/courses" 
                   render={routeProps => <Courses badges={data.badges} {...routeProps} />} 
                 />
