@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import UserInfo from './components/UserInfo';
 import Topics from './components/Topics';
@@ -18,6 +18,9 @@ class App extends Component {
 
   performSearch = (username = "lewismarshall") => {
     this.setState({ loading: true, data: null });
+
+    // redirect back to home page on search
+    this.props.history.push('/');
 
     fetch(`https://teamtreehouse.com/${username}.json`)
       .then(response => response.json())
@@ -50,12 +53,12 @@ class App extends Component {
     }
     
     return (
-      <Router>
+      <React.Fragment>
         <Navbar onSearch={this.performSearch} />
         { user }
-      </Router>
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
