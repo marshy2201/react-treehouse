@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import UserInfo from './components/UserInfo';
 import Topics from './components/Topics';
 import RecentBadges from './components/RecentBadges';
+import Courses from './components/Courses';
 
 class App extends Component {
   state = {
@@ -35,11 +36,18 @@ class App extends Component {
     } else if (!data) { // display not found
       user = <h1 className="display-4 text-center mt-5">User Not Found</h1>;
     } else { // display user info
-      user = <React.Fragment>
-               <UserInfo data={data} />
-               <Topics data={data} />
-               <RecentBadges badges={data.badges} />
-              </React.Fragment>;
+      user =  <React.Fragment>
+                <Route exact path="/">
+                  <UserInfo data={data} />
+                  <Topics data={data} />
+                  <RecentBadges badges={data.badges} />
+                </Route>
+                <Route 
+                  exact
+                  path="/courses" 
+                  render={routeProps => <Courses badges={data.badges} {...routeProps} />} 
+                />
+              </React.Fragment>  
     }
     
     return (

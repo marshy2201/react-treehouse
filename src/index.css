@@ -30,3 +30,29 @@
   border-radius: 0;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
+
+.topic-card {
+  border-bottom: 6px #5fcf80 solid;
+}
+
+.course-title {
+  height: 85px;
+  border-bottom: 6px #5fcf80 solid;
+}
+
+.course-link {
+  color: #666;
+}
+
+.course-link .card {
+  transition: background .2s;
+}
+
+.course-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.course-link:hover .card {
+  background: #6c757d;
+}
