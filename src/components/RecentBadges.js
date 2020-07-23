@@ -3,9 +3,10 @@ import { Jumbotron, Container } from 'react-bootstrap';
 import RecentBadge from './RecentBadge';
 
 const RecentBadges = ({ badges }) => {
-  const recentBadges = badges.reverse()
-                             .slice(0, 5)
-                             .map(badge => <RecentBadge badge={badge} key={badge.id} />);
+  const newBadgesArray = [...badges];
+  const recentBadges = newBadgesArray.reverse()
+                               .slice(0, 5)
+                               .map(badge => <RecentBadge badge={badge} key={badge.id} />);
 
   return (
     <Jumbotron fluid className="mb-0">
