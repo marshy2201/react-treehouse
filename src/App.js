@@ -32,14 +32,14 @@ class App extends Component {
   render() {
     const { data, loading } = this.state;
 
-    let user;
+    let render;
 
     if (loading) { // display loading heading
-      user = <h1 className="display-4 text-center mt-5">Loading...</h1>;
+      render = <h1 className="display-4 text-center mt-5">Loading...</h1>;
     } else if (!data) { // display not found
-      user = <h1 className="display-4 text-center mt-5">User Not Found</h1>;
+      render = <h1 className="display-4 text-center mt-5">User Not Found</h1>;
     } else { // display user info
-      user =  <React.Fragment>
+      render =  <React.Fragment>
                 <Route exact path="/">
                   <UserInfo data={data} />
                   <Topics data={data} />
@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Navbar onSearch={this.performSearch} />
-        { user }
+        { render }
       </React.Fragment>
     );
   }
