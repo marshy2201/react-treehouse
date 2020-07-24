@@ -4,17 +4,18 @@ import { Route, Link } from 'react-router-dom';
 import Course from './Course';
 
 const Courses = ({ badges, match }) => {
+  // create array of course titles sorted in alphabetical order
   const courses = badges.filter(badge => badge.courses[0])
                         .map(badge => badge.courses[0].title)
                         .sort((a, b) => a.localeCompare(b));
 
+  // remove duplicates from the course array
+  // create an object for each course with the name and link props 
   const uniqueCourses = Array.from(new Set(courses))
-                             .map(course => {
-                               return {
-                                 name: course,
-                                 link: `${match.url}/${course.toLowerCase().replace(/ /g, '-')}`
-                               }
-                             });
+                             .map(course => ({
+                                name: course,
+                                link: `${match.url}/${course.toLowerCase().replace(/ /g, '-')}`
+                             }));
 
   return (
     <Container className="mt-5">

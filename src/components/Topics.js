@@ -9,14 +9,11 @@ const Topics = ({ data }) => {
       topic,
       points: data.points[topic]
     } 
-  }).filter(topic => topic.points)
-    .sort((a, b) => (a.points < b.points) ? 1 : -1)
-    .slice(1);
+  }).filter(topic => topic.points) // remove topics with zero points
+    .sort((a, b) => (a.points < b.points) ? 1 : -1) // sort by highest points
+    .slice(1); // remove first object in array as this is total points
 
-  const topics = topicsData.map(topic => (
-    <Topic topic={topic} key={topic.key} />
-  ));
-
+  const topics = topicsData.map(topic => <Topic topic={topic} key={topic.key} /> );
 
   return (
     <Container>
