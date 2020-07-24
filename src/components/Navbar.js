@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../logo.svg';
 import SearchStudent from './SearchStudent';
 
-const NavbarComp = ({ onSearch }) => (
+const NavbarComp = () => (
   <Navbar bg="dark" variant="dark">
     <Container className="flex-wrap">
       <Navbar.Brand as={Link} to="/" className="border-right border-secondary pr-4">
@@ -14,7 +14,7 @@ const NavbarComp = ({ onSearch }) => (
       <Nav className="mr-auto">
         <Nav.Link as={Link} to="/courses">Courses</Nav.Link>
       </Nav>
-      <SearchStudent onSearch={onSearch} />
+      <SearchStudent />
     </Container>
   </Navbar>
 );

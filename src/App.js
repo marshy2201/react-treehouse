@@ -5,6 +5,7 @@ import UserInfo from './components/UserInfo';
 import Topics from './components/Topics';
 import RecentBadges from './components/RecentBadges';
 import Courses from './components/Courses';
+import { Provider } from './components/context';
 
 class App extends Component {
   state = {
@@ -41,22 +42,24 @@ class App extends Component {
     } else { // display user info
       render =  <React.Fragment>
                   <Route exact path="/">
-                    <UserInfo data={data} />
-                    <Topics data={data} />
-                    <RecentBadges badges={data.badges} />
+                    <UserInfo />
+                    <Topics />
+                    <RecentBadges />
                   </Route>
-                  <Route
-                    path="/courses" 
-                    render={routeProps => <Courses badges={data.badges} {...routeProps} />} 
-                  />
+                  <Route path="/courses" component={Courses} />
                 </React.Fragment>  
     }
     
     return (
-      <React.Fragment>
-        <Navbar onSearch={this.performSearch} />
+      <Provider value={{
+        userData: this.state.data,
+        actions: {
+          onSearch: this.performSearch
+        }
+      }}>
+        <Navbar />
         { render }
-      </React.Fragment>
+      </Provider>
     );
   }
 }
