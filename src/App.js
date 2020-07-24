@@ -40,16 +40,16 @@ class App extends Component {
       render = <h1 className="display-4 text-center mt-5">User Not Found</h1>;
     } else { // display user info
       render =  <React.Fragment>
-                <Route exact path="/">
-                  <UserInfo data={data} />
-                  <Topics data={data} />
-                  <RecentBadges badges={data.badges} />
-                </Route>
-                <Route
-                  path="/courses" 
-                  render={routeProps => <Courses badges={data.badges} {...routeProps} />} 
-                />
-              </React.Fragment>  
+                  <Route exact path="/">
+                    <UserInfo data={data} />
+                    <Topics data={data} />
+                    <RecentBadges badges={data.badges} />
+                  </Route>
+                  <Route
+                    path="/courses" 
+                    render={routeProps => <Courses badges={data.badges} {...routeProps} />} 
+                  />
+                </React.Fragment>  
     }
     
     return (
