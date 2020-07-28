@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import UserInfo from './components/UserInfo';
@@ -40,14 +40,14 @@ class App extends Component {
     } else if (!data) { // display not found
       render = <h1 className="display-4 text-center mt-5">User Not Found</h1>;
     } else { // display user info
-      render =  <React.Fragment>
+      render =  <Fragment>
                   <Route exact path="/">
                     <UserInfo />
                     <Topics />
                     <RecentBadges />
                   </Route>
                   <Route path="/courses" component={Courses} />
-                </React.Fragment>  
+                </Fragment>  
     }
     
     return (
