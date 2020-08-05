@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import UserInfo from './components/UserInfo';
@@ -7,61 +7,55 @@ import RecentBadges from './components/RecentBadges';
 import Courses from './components/Courses';
 import { Provider } from './components/context';
 
-class App extends Component {
-  state = {
-    data: null,
-    loading: true
-  }
+const App = (props) => {
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [username, setUsername] = useState("lewismarshall")
 
-  componentDidMount() {
-    this.performSearch();
-  }
+  const updateUsername = (username) => setUsername(username);
 
-  performSearch = (username = "lewismarshall") => {
-    this.setState({ loading: true, data: null });
+  useEffect(() => {
+    setIsLoading(true);
+    setData(null);
 
     // redirect back to home page on search
-    this.props.history.push('/');
+    props.history.push('/');
 
     fetch(`https://teamtreehouse.com/${username}.json`)
       .then(response => response.json())
-      .then(data => this.setState({ data }))
-      .catch(err => console.log("User Not Found"))
-      .finally(() => this.setState({ loading: false }));
+      .then(data => setData(data))
+      .catch(() => console.log("User Not Found"))
+      .finally(() => setIsLoading(false));
+  }, [username]);
+
+  let render;
+
+  if (isLoading) { // display loading heading
+    render = <h1 className="display-4 text-center mt-5">Loading...</h1>;
+  } else if (!data) { // display not found
+    render = <h1 className="display-4 text-center mt-5">User Not Found</h1>;
+  } else { // display user info
+    render =  <>
+                <Route exact path="/">
+                  <UserInfo />
+                  <Topics />
+                  <RecentBadges />
+                </Route>
+                <Route path="/courses" component={Courses} />
+              </>  
   }
-
-  render() {
-    const { data, loading } = this.state;
-
-    let render;
-
-    if (loading) { // display loading heading
-      render = <h1 className="display-4 text-center mt-5">Loading...</h1>;
-    } else if (!data) { // display not found
-      render = <h1 className="display-4 text-center mt-5">User Not Found</h1>;
-    } else { // display user info
-      render =  <Fragment>
-                  <Route exact path="/">
-                    <UserInfo />
-                    <Topics />
-                    <RecentBadges />
-                  </Route>
-                  <Route path="/courses" component={Courses} />
-                </Fragment>  
-    }
-    
-    return (
-      <Provider value={{
-        userData: this.state.data,
-        actions: {
-          onSearch: this.performSearch
-        }
-      }}>
-        <Navbar />
-        { render }
-      </Provider>
-    );
-  }
+  
+  return (
+    <Provider value={{
+      userData: data,
+      actions: {
+        onSearch: updateUsername
+      }
+    }}>
+      <Navbar />
+      { render }
+    </Provider>
+  );
 }
 
 export default withRouter(App);
